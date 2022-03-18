@@ -30,6 +30,7 @@ const mapEventToTextString = (event) => ({
     'gcode:stop': i18n._('G-code: Stop'),
     'gcode:pause': i18n._('G-code: Pause'),
     'gcode:resume': i18n._('G-code: Resume'),
+    'gcode:R1': i18n._('G-code: Relay 1'),
     'feedhold': i18n._('Feed Hold'),
     'cyclestart': i18n._('Cycle Start'),
     'homing': i18n._('Homing'),

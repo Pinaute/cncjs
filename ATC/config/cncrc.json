@@ -1,0 +1,27 @@
+{
+    "secret": "$2a$10$L4U3VUiFL0v20q9cTmUdQu",
+    "users": [
+        {
+            "id": "8b8b8961-740e-4235-a7aa-0d6c52c916ee",
+            "mtime": 1633541104486,
+            "enabled": true,
+            "name": "admin",
+            "password": "$2a$10$dtDi2cng3u7aCsjsS2G06e0Gr2gy76913m0qv.vZwINpmLeTdHpGK"
+        },
+        {
+            "id": "1aef42b4-c34f-4469-abdd-51d344c9370b",
+            "mtime": 1633593529367,
+            "enabled": true,
+            "name": "cncjs-pendant",
+            "password": "$2a$10$L8pm8mOsaZxcybM0jRH0N.Rm4NzlVxUOJT9tiUCzgVckvoMb/joiS"
+        }
+    ],
+    "events": [
+        {
+            "event": "gcode:R1",
+            "trigger": "system",
+            "commands": "cd /app/ATC/cncjs-pendant-python && poetry run python main.py R1",
+            "enabled": true
+        }
+    ]
+}

@@ -235,6 +235,12 @@ class GrblController {
                     line = line.replace('M6', '(M6)');
                 }
 
+                if (_.includes(words, 'R1')) {
+                    log.debug('R1 Relay 1');
+                    this.event.trigger('gcode:R1');
+                    line = line.replace('R1', '(R1)');
+                }
+
                 return line;
             }
         });
@@ -315,6 +321,13 @@ class GrblController {
 
                     // Surround M6 with parentheses to ignore unsupported command error
                     line = line.replace('M6', '(M6)');
+                }
+
+                if (_.includes(words, 'R1')) {
+                    log.debug(`R1 Relay 1: line=${sent + 1}, sent=${sent}, received=${received}`);
+                    this.write('!');
+                    this.event.trigger('gcode:R1');
+                    line = line.replace('R1', '(R1)');
                 }
 
                 return line;

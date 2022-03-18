@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "cncjs-python-pendant"
+version = "0.1.0"
+description = "CNCjs pendant written in Python"
+authors = ["Antoine Cavard"]
+
+
+[tool.poetry.dependencies]
+python = "^3.7"
+python-socketio = {version = "^4", extras = ["asyncio_client"]}
+PyJWT = "^2"
+requests = "^2.25.1"
+"RPi.GPIO" = "^0.7.0"
+

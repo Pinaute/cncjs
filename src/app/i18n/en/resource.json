@@ -77,6 +77,7 @@
     "G-code: Stop": "G-code: Stop",
     "G-code: Pause": "G-code: Pause",
     "G-code: Resume": "G-code: Resume",
+    "G-code: Relay 1": "G-code: Relay 1",
     "Feed Hold": "Feed Hold",
     "Run Macro": "Run Macro",
     "Load Macro": "Load Macro",

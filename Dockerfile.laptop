@@ -1,0 +1,32 @@
+FROM node:10-buster
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    g++ \
+    make \
+    udev \
+    python3-pip && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
+    
+WORKDIR /app
+COPY ./package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+RUN npm run prepare
+
+RUN pip3 install "poetry==1.1" && \
+    cd /app/ATC/cncjs-pendant-python && \
+    poetry install
+
+EXPOSE 8000
+
+CMD [ "bin/cncjs", "--config", "/app/ATC/config/cncrc.json" ]
+
+
+# https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant
+# cat /root/.profile
+# mesg n || true -> tty -s && mesg n

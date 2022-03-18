@@ -1,0 +1,24 @@
+FROM balenalib/raspberrypi3-node:10
+
+WORKDIR /app
+COPY ./ ./
+
+RUN [ "cross-build-start" ]
+RUN apt-get update && apt-get install -y \
+    python3 \
+    g++ \
+    gcc \
+    make \
+    python3-pip \
+    python3-dev && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/*
+RUN npm install
+RUN npm run prepare
+RUN pip3 install "poetry==1.1" && \
+    cd /app/ATC/cncjs-pendant-python && \
+    poetry install
+RUN [ "cross-build-end" ]
+
+EXPOSE 8000
+CMD [ "bin/cncjs", "--config", "/app/ATC/config/cncrc.json" ]
